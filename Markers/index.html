@@ -1,0 +1,119 @@
+<!-- Reginald Swan, Jr.
+     12/7/2016 -->
+	 
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<title>Markers on Sale!</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="markers.css">
+	<script>
+		function calculate(){
+		
+			var cost = (parseFloat(document.getElementById("Price").value));
+			
+			//set cost
+			var q = document.getElementById("Quantity");
+			var quant = q.options[q.selectedIndex].value;
+			cost = cost * parseFloat(quant);
+			document.getElementById("Cost").value = cost;
+			
+			//delivery (cost * shipping rate)
+			var s = document.getElementById("Delivery");
+			var sPrice = s.options[s.selectedIndex].value;
+			var shipCost = cost * parseFloat(sPrice);
+			document.getElementById("Shipping").value = shipCost.toFixed(2);		
+			
+			
+			
+				
+			//set Tax Amount(cost of order * tax rate)
+			var t = document.getElementById("State");
+			var tPrice = t.options[t.selectedIndex].value;
+			var taxCost = cost * parseFloat(tPrice);
+			document.getElementById("Tax").value = taxCost.toFixed(2);
+
+			var total = document.getElementById("Your Total is").value = (cost + shipCost + taxCost).toFixed(2);
+		}
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+	<main>
+		<h1>Markers! Markers! Markers!</h1>
+		<h1>Markers on Sale!</h1>
+		<p> <strong> Calculate Your Order </strong> </p>
+		<br/>
+		
+		<table align="center">
+			<tr>
+				<td align="right">Price:</td>
+				<td align="left"> <input id="Price" type="textbox" value="5.49">  </td>
+			<tr>
+				<td align="right">Quantity:</td>
+				<td align="left">
+					<select id="Quantity" name="Quantity">
+					  <option value="1">1</option>
+					  <option value="2">2</option>
+					  <option value="3">3</option>
+					  <option value="4">4</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">State:</td>
+				<td align="left">
+				<select id="State" name="State">
+					  <option value=0.085>Alabama</option>
+					  <option value=0.075>Florida</option>
+					  <option value=0.08>Georgia</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Delivery Method:</td>
+				<td align="left">
+				<select id="Delivery" name="Delivery">
+					  <option value=0.15>Standard UPS</option>
+					  <option value=0.10>Box Rate</option>
+					  <option value=0.3>Overnight</option>
+					  <option value=0.6>Next Day Air</option>
+					</select>
+				</td>
+			</tr>
+			<tr class="blank_row"> 
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<td align="right">Cost (P * Q):</td>
+				<td align="left"> <input id="Cost" type="textbox" readonly="readonly" label="cost">  </td>
+			</tr>
+			<tr>
+				<td align="right">Shipping Cost:</td>
+				<td align="left"> <input id="Shipping" type="textbox" readonly="readonly" label="Shipping Cost"> </td>
+			</tr>
+			<tr>
+				<td align="right">Tax Amount:</td>
+				<td align="left"> <input id="Tax" type="textbox" readonly="readonly" label="Tax Amount"> </td>
+			</tr>
+			<tr class="blank_row">
+				<td colspan="2"></td>
+			</tr>
+			<tr align="center" >
+				<td colspan = "2">Your Total is:</td>
+			</tr>
+			<tr align="center">
+				<td colspan = "2"> <input id="Your Total is" type="textbox"> </td>
+			</tr>
+			<tr align="center" >
+				<td colspan = "2"> <button type="button" onclick="calculate()"> Calculate My Order </button></td>
+			</tr>
+		</table>
+			
+	</main>
+	</div>
+</body>
+
+<html>
+
